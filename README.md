@@ -3,7 +3,7 @@ Introduction :
 This report provides a comparative analysis of three key economic indicators: M1 Money Supply, Stock Market Performance, and Inflation Rate for the USA and Nigeria. The data spans several years and is visualized to understand the trends and draw insights.
 
 ## Methodology
-Data was sourced from reliable platforms and analyzed in Python. We used correlation analysis and visualizations to explore relationships between these indicators in both countries.
+Data was sourced from reliable platforms  (CBN, FRED, yahoo fin, ngxgroup.com) and analyzed in Python. We used correlation analysis and visualizations to explore relationships between these indicators in both countries.
 
 ## Key Findings
 USA:
@@ -25,4 +25,4 @@ Decreasing Productivity : Inefficiencies due to inflation.<br>
 Increasing Productivity : Economic improvements.<br>
 
 ## Conclusion
-The analysis highlights significant correlations, particularly in Nigeria, where inflation and currency devaluation pose major challenges. Careful monetary policy is crucial to maintaining economic stability.
+The analysis highlights significant correlations, particularly in Nigeria, where inflation and currency devaluation pose major challenges. Careful monetary policy is crucial to maintaining economic stability. [FULL ANALYSIS REPORT HERE](https://docs.google.com/document/d/1oMQsU8UlKC5i03izxt8-v6UeeKLXEfO1J-XAq7PhCk8/edit)
