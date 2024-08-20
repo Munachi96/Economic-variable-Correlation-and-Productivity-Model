@@ -15,7 +15,7 @@ Nigeria:
 - M1 vs. Inflation : Extremely strong positive correlation (0.98), indicating a direct link.
 - M1 vs. Stock Market : Strong positive correlation (0.60), showing that increased money supply boosts market performance.
 - Stock Market vs. Inflation : Moderate positive correlation (0.46), suggesting inflation could enhance market performance.
-- 
+ 
 ## Productivity Model
 Productivity was modeled as:𝑃=𝑀+𝑆−3 
 Where P is productivity, M is money supply, S is stock market performance, and I is inflation. Trends were plotted over time, revealing:
