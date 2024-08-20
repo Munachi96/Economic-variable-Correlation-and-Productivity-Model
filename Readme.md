@@ -1,4 +1,4 @@
-``` Python
+ ``` Python
 
 import pandas as pd
 import numpy as np
@@ -59,37 +59,38 @@ print(usa_corr_lagged)
 print("\nNigeria Time-Shifted Correlations")
 print(nigeria_corr_lagged)
 
-# Import necessary libraries
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Assume data is already loaded into the following DataFrames
-# usa_m1, usa_stock_market, usa_inflation
-# nigeria_m1, nigeria_stock_market, nigeria_inflation
-
 # Load the data
-usa_m1 = pd.read_excel('C:/Users/v v/Desktop/HNG/mid/M1 Usa.xlsx', parse_dates=['Year'], index_col='Year')
-usa_stock_market = pd.read_excel('C:/Users/v v/Desktop/HNG/mid/Stock Usa.xlsx', parse_dates=['Year'], index_col='Year')
-usa_inflation = pd.read_excel('C:/Users/v v/Desktop/HNG/mid/Usa Inf.xlsx', parse_dates=['Year'], index_col='Year')
+usa_m1 = pd.read_excel('C:Users\user\OneDrive\Desktop\MY EXCEL WORK\mid-hng\M1 Usa.xlsx', parse_dates=['Year'], index_col='Year')
+usa_stock_market = pd.read_excel('C:Users\user\OneDrive\Desktop\MY EXCEL WORK\mid-hng\Stock Usa.xlsx', parse_dates=['Year'], index_col='Year')
+usa_inflation = pd.read_excel('C:Users\user\OneDrive\Desktop\MY EXCEL WORK\mid-hng\Usa Inf.xlsx', parse_dates=['Year'], index_col='Year')
 
-nigeria_m1 = pd.read_excel('C:/Users/v v/Desktop/HNG/mid/M1 Nigeria.xlsx', parse_dates=['Year'], index_col='Year')
-nigeria_stock_market = pd.read_excel('C:/Users/v v/Desktop/HNG/mid/Stock Nigeria.xlsx', parse_dates=['Year'], index_col='Year')
-nigeria_inflation = pd.read_excel('C:/Users/v v/Desktop/HNG/mid/Nigeria Inf.xlsx', parse_dates=['Year'], index_col='Year')
+nigeria_m1 = pd.read_excel('C:Users\user\OneDrive\Desktop\MY EXCEL WORK\mid-hng\M1 Nigeria.xlsx', parse_dates=['Year'], index_col='Year')
+nigeria_stock_market = pd.read_excel('C:Users\user\OneDrive\Desktop\MY EXCEL WORK\mid-hng\Stock Nigeria.xlsx', parse_dates=['Year'], index_col='Year')
+nigeria_inflation = pd.read_excel('C:Users\user\OneDrive\Desktop\MY EXCEL WORK\mid-hng\Nigeria Inf.xlsx', parse_dates=['Year'], index_col='Year')
+
 
 # Function to normalize data
-def normalize(df, column_name):
-    return (df[column_name] - df[column_name].min()) / (df[column_name].max() - df[column_name].min())
+def normalize(series):
+    return (series - series.min()) / (series.max() - series.min())
 
 # Normalize USA data
-usa_m1['M1_normalized'] = normalize(usa_m1, 'M1')
-usa_stock_market['Stock_market_normalized'] = normalize(usa_stock_market, 'Stock Market')
-usa_inflation['Inflation_normalized'] = normalize(usa_inflation, 'Inflation')
+usa_m1['M1_norm'] = normalize(usa_m1['M1'])
+usa_stock_market['Stock_market_norm'] = normalize(usa_stock_market['Stock Market'])
+usa_inflation['Inflation_norm'] = normalize(usa_inflation['Inflation'])
 
 # Normalize Nigeria data
-nigeria_m1['M1_normalized'] = normalize(nigeria_m1, 'M1')
-nigeria_stock_market['Stock_market_normalized'] = normalize(nigeria_stock_market, 'Stock Market')
-nigeria_inflation['Inflation_normalized'] = normalize(nigeria_inflation, 'Inflation')
+nigeria_m1['M1_norm'] = normalize(nigeria_m1['M1'])
+nigeria_stock_market['Stock_market_norm'] = normalize(nigeria_stock_market['Stock Market'])
+nigeria_inflation['Inflation_norm'] = normalize(nigeria_inflation['Inflation'])
+
+# let Define weights
+alpha = 1/3
+beta = 1/3
+gamma = 1/3
 
 # Calculate the productivity index for USA
 usa_productivity = pd.DataFrame(index=usa_m1.index)
@@ -127,13 +128,13 @@ import matplotlib.pyplot as plt
 
 # Sample Data (to be replaced with actual data)
 # Assume data is available in the following DataFrames with columns: 'Year', 'Exchange Rate', 'Inflation', 'Productivity'
-usa_inflation = pd.read_excel('C:/Users/v v/Desktop/HNG/mid/Usa Inf.xlsx', parse_dates=['Year'], index_col='Year')
-Productivity_USA =  pd.read_excel('C:/Users/v v/Desktop/HNG/mid/Usa Prod.xlsx', parse_dates=['Year'], index_col='Year')
+usa_inflation = pd.read_excel('C:Users\user\OneDrive\Desktop\MY EXCEL WORK\mid-hng\M1 usa.xlsx', parse_dates=['Year'], index_col='Year')
+Productivity_USA =  pd.read_excel('C:Users\user\OneDrive\Desktop\MY EXCEL WORK\mid-hng\usa Prod.xlsx', parse_dates=['Year'], index_col='Year')
 
 
-nigeria_inflation = pd.read_excel('C:/Users/v v/Desktop/HNG/mid/Nigeria Inf.xlsx', parse_dates=['Year'], index_col='Year')
-nigeria_exchange_rate = pd.read_excel('C:/Users/v v/Desktop/HNG/mid/Exch.xlsx', parse_dates=['Year'], index_col='Year')
-Productivity_Nigeria =  pd.read_excel('C:/Users/v v/Desktop/HNG/mid/Nig Prod.xlsx', parse_dates=['Year'], index_col='Year')
+nigeria_inflation = pd.read_excel('C:Users\user\OneDrive\Desktop\MY EXCEL WORK\mid-hng\Nigeria Inf.xlsx', parse_dates=['Year'], index_col='Year')
+nigeria_exchange_rate = pd.read_excel('C:Users\user\OneDrive\Desktop\MY EXCEL WORK\mid-hng\Exch.xlsx', parse_dates=['Year'], index_col='Year')
+Productivity_Nigeria =  pd.read_excel('C:Users\user\OneDrive\Desktop\MY EXCEL WORK\mid-hng\Nig Prod.xlsx', parse_dates=['Year'], index_col='Year')
 
 usa_data = pd.concat([usa_inflation, Productivity_USA], axis=1).dropna()
 nigeria_data = pd.concat([nigeria_inflation, nigeria_exchange_rate, Productivity_Nigeria], axis=1).dropna()
